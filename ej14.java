@@ -2,7 +2,7 @@ package prac1;
 import java.util.*;
 public class ej14 {
 
-	public static int 鷏timaPosici髇(int[] v,int n) {
+	public static int 煤ltimaPosici贸n(int[] v,int n) {
 		for (int i=v.length-1;i>=0;i--)
 			if (v[i]==n)
 				return i;
@@ -10,9 +10,16 @@ public class ej14 {
 	}
 	
 	public static void main (String args[]) {
-		int[] ector = {5,4,2,9,6,7,1};
-		System.out.println(鷏timaPosici髇(ector,6));
-		System.out.println(鷏timaPosici髇(ector,3));
+		int[] vector1 = {5,4,2,9,6,7,1};
+		int[] vector2 = {5,4,2,5,4,9,7,5,4,8,8,8,5};
+		System.out.print("煤ltimaPosici贸n 6 en {5,4,2,9,6,7,1}: ");
+		System.out.println(煤ltimaPosici贸n(vector1,6));
+		System.out.print("en {5,4,2,9,6,7,1}: ");
+		System.out.println(煤ltimaPosici贸n(vector1,3));
+		System.out.print("en {5,4,2,5,4,9,7,5,4,8,8,8,5}: ");
+		System.out.println(煤ltimaPosici贸n(vector2,5));
+		System.out.print(" en {5,4,2,5,4,9,7,5,4,8,8,8,5}: ");
+		System.out.println(煤ltimaPosici贸n(vector2,8));
 	}
 	
 }

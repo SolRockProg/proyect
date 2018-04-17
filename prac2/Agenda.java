@@ -17,8 +17,9 @@ public class Agenda {
 				if (vector[i].getFecha().compareTo(tarea.getFecha()) > 0 && cont==0) {
 					cont++;
 					aux[i] = tarea;
-				} else {
-					aux[i + cont] = vector[i];
+				} 
+				if(vector[i].getFecha().compareTo(tarea.getFecha()) <= 0 || cont!=0) {
+					aux[i+cont] = vector[i];
 				}
 
 			}
@@ -30,7 +31,7 @@ public class Agenda {
 
 	}
 
-	public int catindad() {
+	public int cantidad() {
 		return vector.length;
 	}
 
@@ -54,7 +55,7 @@ public class Agenda {
 	public void borrarPasadas(Fecha fecha) {
 		int cont = 0;
 		for (int i = 0; i < vector.length; i++) {
-			if (fecha.compareTo(this.vector[i].getFecha()) == 1) {
+			if (fecha.compareTo(this.vector[i].getFecha()) > 0) {
 				cont++;
 			}
 		}

@@ -1,8 +1,7 @@
-package prac2;
+package Prac2;
 import java.*;
 import java.util.*;
 public class Fecha {
-	
 	private int día;
 	private int mes;
 	private int año;
@@ -33,7 +32,7 @@ public class Fecha {
 	}
 	
 	public int compareTo (Fecha otraFecha) {
-		int res = año*10000+mes*100+día - otraFecha.año*10000+otraFecha.mes*100+otraFecha.día;
+		int res = (año*10000+mes*100+día) - (otraFecha.año*10000+otraFecha.mes*100+otraFecha.día);
 		if (res>0)
 			return 1;
 		if (res<0)
@@ -122,5 +121,4 @@ public class Fecha {
 		System.out.println(cumple.díaSiguiente().toString());
 		System.out.println(ejemplo.hoy().toString());
 	}
-
 }

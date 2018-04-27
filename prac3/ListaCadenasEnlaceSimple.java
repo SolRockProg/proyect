@@ -16,15 +16,15 @@ public class ListaCadenasEnlaceSimple implements ListaCadenas{
 	
 	public boolean add(String s) {
 		if (isEmpty()) {
-			Nodo único = new Nodo(s,null);
-			primero=único;
+			primero=new Nodo(s,null);
+			talla++;
 		}
-		Nodo aux;
-		for(aux=primero;aux.sig!=null;aux=aux.sig);
-		
-		Nodo ult = new Nodo (s,null);
-		aux.sig = ult;
-		talla++;
+		else {
+			Nodo aux;
+			for (aux=primero;aux.sig!=null;aux=aux.sig);
+			aux.sig = new Nodo (s,null);
+			talla++;
+		}
 		return true;
 	}
 	
@@ -33,21 +33,21 @@ public class ListaCadenasEnlaceSimple implements ListaCadenas{
 			throw new IndexOutOfBoundsException();
 		}
 		if (isEmpty()) {
-			Nodo único = new Nodo(s,null);
-			primero = único;
-			talla++;
+			primero = new Nodo(s,null);
 		}
 		else {
-			Nodo aux=primero;
-			Nodo prev=null;
-			for (int x=1;x<=i;i++) {
-				prev=aux;
-				aux=aux.sig;
+			Nodo nuevo = primero;
+			if (i==0) {
+				primero = new Nodo (s,primero);
 			}
-			Nodo meter = new Nodo (s,aux);
-			prev.sig=meter;
-			talla++;
+			else {
+				for (int x=1;x<i;x++) {
+					nuevo=nuevo.sig;
+				}
+				nuevo.sig=new Nodo(s,nuevo.sig);
+			}
 		}
+		talla++;
 	}
 	
 	public void clear() {

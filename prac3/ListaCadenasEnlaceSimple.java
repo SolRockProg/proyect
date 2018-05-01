@@ -106,15 +106,22 @@ public class ListaCadenasEnlaceSimple implements ListaCadenas{
 	}
 	
 	public String remove (int i) throws IndexOutOfBoundsException {
+		String cad;
 		if (i<0||i>size()) {
 			throw new IndexOutOfBoundsException();
 		}
-		Nodo este = primero;
-		for (int x = 1;x<i;x++) {
-			este=este.sig;
+		if (i==0) {
+			cad = primero.dato;
+			primero=primero.sig;
 		}
-		String cad = este.dato;
-		este.sig=este.sig.sig;
+		else {
+			Nodo este = primero;
+			for (int x = 1;x<i;x++) {
+				este=este.sig;
+			}
+			cad = este.sig.dato;
+			este.sig=este.sig.sig;
+		}
 		talla--;
 		return cad;
 	}
@@ -165,4 +172,3 @@ public class ListaCadenasEnlaceSimple implements ListaCadenas{
 	}
 
 }
-

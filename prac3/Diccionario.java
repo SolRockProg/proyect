@@ -14,8 +14,9 @@ public class Diccionario {
 			this.sig = sig;
 			this.ant = ant;
 		}
+
 		public String toString() {
-			return this.cadena+"-->"+this.cantidad;
+			return this.cadena + "-->" + this.cantidad;
 		}
 	}
 
@@ -24,57 +25,64 @@ public class Diccionario {
 	public void añadir(String unaCadena, int unaCantidad) {
 		Nodo aux = primero;
 		boolean hola = false;
-		while (aux != null) {
-			if (unaCadena.equals(aux.cadena)) {
-				aux.cantidad = aux.cantidad + unaCantidad;
-				hola = true;
-			} else {
-				if (unaCadena.compareTo(aux.cadena) > 0) {
-					Nodo nuevo = new Nodo(unaCadena, unaCantidad, aux, aux.ant);
+		if (primero == null) {
+			ultimo = primero = new Nodo(unaCadena, unaCantidad, null, null);
+		} else {
+			while (aux != null) {
+				if (unaCadena.equals(aux.cadena)) {
+					aux.cantidad = aux.cantidad + unaCantidad;
 					hola = true;
+				} else {
+					if (unaCadena.compareTo(aux.cadena) > 0) {
+						Nodo nuevo = new Nodo(unaCadena, unaCantidad, aux, aux.ant);
+						hola = true;
+					}
 				}
+				aux = aux.sig;
 			}
-			aux=aux.sig;
+			if (!hola) {
+				Nodo nuevo = new Nodo(unaCadena, unaCantidad, null, ultimo);
+				ultimo = ultimo.sig;
+			}
 		}
-		if(!hola) {
-			Nodo nuevo = new Nodo(unaCadena, unaCantidad, null, ultimo);
-			ultimo=ultimo.sig;
-		}
-		
+
 	}
+
 	public String cadenaConMayorCantidad() {
-		if(primero==null) {
+		if (primero == null) {
 			return null;
 		}
-		Nodo aux=primero;
-		int max=0;
-		String cad="";
-		while(aux!=null) {
-			if(max<aux.cantidad) {
-				cad=aux.cadena;
+		Nodo aux = primero;
+		int max = 0;
+		String cad = "";
+		while (aux != null) {
+			if (max < aux.cantidad) {
+				cad = aux.cadena;
 			}
-			aux=aux.sig;
+			aux = aux.sig;
 		}
 		return cad;
 	}
+
 	public int cantidad(String unaCadena) {
-		Nodo aux=primero;
-		while(aux!=null) {
-			if(unaCadena.equals(aux.cadena)) {
+		Nodo aux = primero;
+		while (aux != null) {
+			if (unaCadena.equals(aux.cadena)) {
 				return aux.cantidad;
 			}
-			aux=aux.sig;
+			aux = aux.sig;
 		}
 		return 0;
 	}
+
 	public String toString() {
-		Nodo aux=primero;
-		String cad="{";
-		while(aux!=null) {
-			if(aux!=ultimo) {
-				cad+=aux.toString()+", ";
-			}else {
-				cad+=aux.toString()+"}";
+		Nodo aux = primero;
+		String cad = "{";
+		while (aux != null) {
+			if (aux != ultimo) {
+				cad += aux.toString() + ", ";
+			} else {
+				cad += aux.toString() + "}";
 			}
 		}
 		return cad;

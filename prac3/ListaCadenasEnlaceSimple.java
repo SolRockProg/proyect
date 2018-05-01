@@ -60,7 +60,7 @@ public class ListaCadenasEnlaceSimple implements ListaCadenas{
 			throw new IndexOutOfBoundsException();
 		}
 		Nodo correcto = primero;
-		for (int p=0;p<=i;p++) {
+		for (int p=1;p<=i;p++) {
 			correcto = correcto.sig;
 		}
 		return correcto.dato;
@@ -113,7 +113,7 @@ public class ListaCadenasEnlaceSimple implements ListaCadenas{
 		for (int x = 1;x<i;x++) {
 			este=este.sig;
 		}
-		String cad = este.sig.dato;
+		String cad = este.dato;
 		este.sig=este.sig.sig;
 		talla--;
 		return cad;
@@ -165,3 +165,4 @@ public class ListaCadenasEnlaceSimple implements ListaCadenas{
 	}
 
 }
+

@@ -83,47 +83,29 @@ public class Fecha {
 	
 	public Fecha díaSiguiente() {
 		Fecha mañana = new Fecha(this.día+1,this.mes,this.año);
-		
-		if (( mes<8 && mes%2==1 || mes>=8 && mes%2==0) && día==31) {
-			mañana.día=1;
-			mañana.mes++;
+		if (mañana.día >= díasMes(mañana.mes, mañana.año)) {
+			mañana.mes += 1;
+			mañana.día = 1;
 		}
 		
-		if ((mes<8 && mes%2==0 || mes>=8 && mes%2==1) && día==30) {
-			mañana.día=1;
-			mañana.mes++;
+		if (mañana.mes == 13) {
+			mañana.mes = 1;
+			mañana.año += 1;
 		}
-		
-		if (añoBisiesto(año)) {
-			if (mes==2 && día==29) {
-				mañana.día=1;
-				mañana.mes=3;
-			}
-		}
-		else {
-			if (mes==2 && día==29) {
-				mañana.día=1;
-				mañana.mes=3;
-			}
-		}
-		
-		if (mañana.mes==13) {
-			mañana.año++;
-			mañana.mes=1;
-		}
-		
 		return mañana;
 	}
 	
 	public static void main(String[] args) {
 		Fecha cumple = new Fecha (3,2,1999);
 		Fecha ejemplo = new Fecha (31,12,1999);
+		Fecha error = new Fecha (28,2,1901);
 		System.out.println(ejemplo.toString());
 		System.out.println(ejemplo.díaSiguiente().toString());
 		System.out.println(cumple.díaSiguiente().toString());
 		System.out.println(Fecha.hoy().toString());
 		Fecha ejem2 = new Fecha (1,1,2000);
 		System.out.println(cumple.compareTo(ejem2));
+		System.out.println(error.díaSiguiente().toString());
 	}
 		
 }
